@@ -7,7 +7,7 @@ const Cart = (props) => {
     { id: "m2", name: "Schnitzel", amount: 2, price: 16.5 },
   ];
   return (
-    <Modal>
+    <Modal onHideCart={props.onHideCart}>
       <h3 className={classes.h3}>Shopping cart</h3>
       {items.map((el) => {
         return (
