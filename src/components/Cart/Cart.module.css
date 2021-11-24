@@ -1,0 +1,31 @@
+.h3 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.total {
+  margin-top: 1rem;
+}
+
+.title {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.actions button {
+  border: none;
+  background-color: blue;
+  font-weight: bold;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 20px;
+  margin: 10px 0;
+  margin-right: 50px;
+}
