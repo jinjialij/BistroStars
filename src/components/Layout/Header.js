@@ -13,7 +13,7 @@ const Header = (props) => {
     <>
       <header className={classes.toolbar}>
         <h1>Bistro Stars</h1>
-        <HeadCartBtn cartBtn={classes.cartBtn} />
+        <HeadCartBtn cartBtn={classes.cartBtn} onShowCart={props.onShowCart} />
       </header>
       <div className={classes.bgimg}>
         <img src={mealsImg} alt="A table full of amazing food" />

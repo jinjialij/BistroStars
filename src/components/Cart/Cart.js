@@ -1,7 +1,7 @@
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal/Modal";
 import Orderlist from "../UI/Orderlist/Orderlist";
-const Cart = () => {
+const Cart = (props) => {
   const items = [
     { id: "m1", name: "Sushi", amount: 2, price: 13 },
     { id: "m2", name: "Schnitzel", amount: 2, price: 16.5 },
@@ -44,8 +44,10 @@ const Cart = () => {
         </div>
       </div>
       <div className={classes.actions}>
-        <button>Close</button>
-        <button>Order</button>
+        <button type="button" onClick={props.onHideCart}>
+          Close
+        </button>
+        <button type="button">Order</button>
       </div>
     </Modal>
   );

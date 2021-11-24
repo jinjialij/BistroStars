@@ -1,6 +1,14 @@
 import classes from "./Orderlist.module.css";
+import { useState } from "react";
 
 const Orderlist = (props) => {
+  const [isUpdate, setIsUpdate] = useState(false);
+  const updateHandler = () => {
+    setIsUpdate(true);
+  };
+  const saveHandler = () => {
+    setIsUpdate(false);
+  };
   return (
     <div className={classes.list}>
       <div className={classes.name}>
@@ -13,14 +21,33 @@ const Orderlist = (props) => {
         <input
           className={classes.amount}
           type="number"
-          name="amount"
+          name={props.label.toLowerCase().toString()}
           value={props.amount}
-          disabled="true"
+          disabled={!isUpdate}
         />
       </div>
       <div className={classes.btngroup}>
-        <button>Update</button>
-        <button>Delete</button>
+        {!isUpdate && (
+          <button
+            type="button"
+            name="update"
+            id="update"
+            onClick={updateHandler}
+          >
+            Update
+          </button>
+        )}
+
+        {isUpdate && (
+          <button type="button" name="save" id="save" onClick={saveHandler}>
+            Save
+          </button>
+        )}
+        {isUpdate && (
+          <button type="button" name="delete" id="delete">
+            Delete
+          </button>
+        )}
       </div>
     </div>
   );

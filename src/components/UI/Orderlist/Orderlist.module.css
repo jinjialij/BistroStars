@@ -34,6 +34,7 @@
 .inputgroup {
   margin: 0 1rem;
   display: flex;
+  min-width: 65px;
 }
 
 .inputgroup label {
@@ -42,6 +43,7 @@
 
 .inputgroup input {
   margin-right: 1rem;
+  min-width: 35px;
 }
 
 .btngroup {
@@ -59,6 +61,12 @@
   border-radius: 20px;
   margin: 5px 0;
   margin-right: 10px;
+}
+
+.btngroup button:hover,
+.btngroup button:active {
+  background-color: #5a1a01;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 500px) {
