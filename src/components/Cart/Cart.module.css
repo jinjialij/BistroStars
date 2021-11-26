@@ -12,11 +12,17 @@
 
 .total {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.spans {
+  margin-left: 50%;
 }
 
 .title {
   display: inline-block;
-  width: 100px;
+  width: 200px;
   font-weight: bold;
   margin-bottom: 5px;
 }
@@ -28,14 +34,23 @@
 
 .actions button {
   border-color: #5a1a01;
-  color: #5a1a01;
-  background-color: white;
   font-weight: bold;
-  font-size: 0.8rem;
-  padding: 0.7rem;
+  font-size: 1rem;
+  padding: 0.5rem;
   border-radius: 30px;
   margin: 10px 0;
-  margin-right: 50px;
+  margin-right: 5%;
+}
+
+.close {
+  color: #5a1a01;
+  background-color: white;
+}
+
+.order {
+  background-color: #5a1a01;
+  border: none;
+  color: white;
 }
 
 .actions button:hover,
@@ -50,5 +65,12 @@
   .h3 {
     font-size: 1.2rem;
     margin: 5px 0;
+  }
+  .total {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  .spans {
+    margin-left: 0%;
   }
 }
