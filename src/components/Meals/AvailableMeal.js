@@ -36,6 +36,7 @@ const AvailableMeal = () => {
           <Card
             key={el.id}
             s
+            id={el.id}
             name={el.name}
             desc={el.description}
             price={el.price}
