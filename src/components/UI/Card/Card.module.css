@@ -1,0 +1,65 @@
+.card {
+  background-color: white;
+  margin: 1rem;
+  padding: 1rem;
+  width: 70%;
+}
+
+.card-body {
+  float: left;
+  width: 12rem;
+  margin-right: 3rem;
+}
+
+.card-title {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.card-price {
+  font-weight: bold;
+}
+
+.right-group {
+  float: right;
+  height: 100%;
+  margin-top: 2rem;
+  margin-right: 3%;
+}
+
+.input-group label {
+  font-weight: bold;
+}
+
+.input-group input {
+  margin-left: 0.5rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.btn {
+  float: right;
+  margin-top: 10px;
+}
+
+.btn button {
+  background-color: brown;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 6px;
+}
+
+@media screen and (max-width: 500px) {
+  .right-group {
+    float: left;
+  }
+}

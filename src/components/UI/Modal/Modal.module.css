@@ -1,0 +1,33 @@
+.backdrop {
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 10%;
+  min-width: 80%;
+  z-index: 300;
+  background-color: white;
+  margin-top: 3rem;
+}
+
+.content {
+  padding: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-top: 3rem;
+  }
+}
