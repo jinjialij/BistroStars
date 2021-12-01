@@ -46,6 +46,23 @@
   color: #5a1a01;
   background-color: white;
 }
+.error {
+  color: red;
+  margin-top: 1rem;
+}
+
+.feedback-close {
+  display: inline-block;
+  border-color: #5a1a01;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 30px;
+  margin: 10px 0;
+  margin-left: 45%;
+  color: #5a1a01;
+  background-color: white;
+}
 
 .order {
   background-color: #5a1a01;

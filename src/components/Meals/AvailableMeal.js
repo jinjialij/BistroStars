@@ -5,11 +5,20 @@ import { useEffect, useState } from "react";
 
 const AvailableMeal = () => {
   const [meals, setsMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
   useEffect(() => {
     const fetchMeals = async () => {
+      setIsLoading(true);
       const response = await fetch(
         "https://learn-5c267.firebaseio.com/Meals.json"
       );
+
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong. Status code: ${response.statue} Status: ${response.statusText}`
+        );
+      }
       const responseData = await response.json();
 
       let loadedMeals = [];
@@ -22,26 +31,34 @@ const AvailableMeal = () => {
         });
       }
       setsMeals(loadedMeals);
+      setIsLoading(false);
     };
-    fetchMeals();
+    fetchMeals().catch((err) => {
+      console.error(err);
+      setIsLoading(false);
+      setError(err.message);
+    });
   }, []);
 
   return (
     <section className={classes.meals}>
-      {meals.map((el) => {
-        return (
-          <Card
-            key={el.id}
-            s
-            id={el.id}
-            name={el.name}
-            desc={el.description}
-            price={el.price}
-            label={`Amount`}
-            btnDesc="Add"
-          />
-        );
-      })}
+      {isLoading && <p>Loading...</p>}
+      {!isLoading &&
+        meals.map((el) => {
+          return (
+            <Card
+              key={el.id}
+              s
+              id={el.id}
+              name={el.name}
+              desc={el.description}
+              price={el.price}
+              label={`Amount`}
+              btnDesc="Add"
+            />
+          );
+        })}
+      {!isLoading && error && <p className={classes.error}>{error}</p>}
     </section>
   );
 };
