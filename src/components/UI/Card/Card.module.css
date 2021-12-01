@@ -55,7 +55,17 @@
   color: white;
   border-radius: 20px;
   border: none;
-  padding: 5px 6px;
+  padding: 5px 10px;
+}
+
+.btn button:hover,
+.btn button:active {
+  background-color: #5a1a01;
+  font-size: 1.2rem;
+}
+
+.btn button:active {
+  color: brown;
 }
 
 @media screen and (max-width: 500px) {

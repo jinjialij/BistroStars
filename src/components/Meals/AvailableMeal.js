@@ -1,49 +1,64 @@
 import Card from "../UI/Card/Card";
 import classes from "./AvailableMeal.module.css";
 
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+import { useEffect, useState } from "react";
 
 const AvailableMeal = () => {
+  const [meals, setsMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
+  useEffect(() => {
+    const fetchMeals = async () => {
+      setIsLoading(true);
+      const response = await fetch(
+        "https://learn-5c267.firebaseio.com/Meals.json"
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Something went wrong. Status code: ${response.statue} Status: ${response.statusText}`
+        );
+      }
+      const responseData = await response.json();
+
+      let loadedMeals = [];
+      for (const key in responseData) {
+        loadedMeals.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      }
+      setsMeals(loadedMeals);
+      setIsLoading(false);
+    };
+    fetchMeals().catch((err) => {
+      console.error(err);
+      setIsLoading(false);
+      setError(err.message);
+    });
+  }, []);
+
   return (
     <section className={classes.meals}>
-      {DUMMY_MEALS.map((el) => {
-        return (
-          <Card
-            key={el.id}
-            s
-            name={el.name}
-            desc={el.description}
-            price={el.price}
-            label={`Amount`}
-            btnDesc="Add"
-          />
-        );
-      })}
+      {isLoading && <p>Loading...</p>}
+      {!isLoading &&
+        meals.map((el) => {
+          return (
+            <Card
+              key={el.id}
+              s
+              id={el.id}
+              name={el.name}
+              desc={el.description}
+              price={el.price}
+              label={`Amount`}
+              btnDesc="Add"
+            />
+          );
+        })}
+      {!isLoading && error && <p className={classes.error}>{error}</p>}
     </section>
   );
 };
