@@ -13,9 +13,9 @@ const Cart = (props) => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
-  const subTotals = Math.round(cartCtx.totalAmount, 2);
-  const tax = +Math.round(subTotals * 0.15, 2);
-  const totalAmount = +subTotals + +tax;
+  const subTotals = cartCtx.totalAmount.toFixed(2);
+  const tax = (+subTotals * 0.15).toFixed(2);
+  const totalAmount = (+subTotals + +tax).toFixed(2);
   const hasItems = cartCtx.items.length;
   const numberOfItems = cartCtx.items.reduce((sum, current) => {
     return (sum += +current.amount);
@@ -37,7 +37,7 @@ const Cart = (props) => {
     setIsSubmitting(true);
     try {
       const response = await fetch(
-        "https://learn-5c267.firebaseio.com/Orders.json",
+        "https://bistrostar-73b61-default-rtdb.firebaseio.com/Orders.json",
         {
           method: "POST",
           body: JSON.stringify({ user: form, orderedItems: cartCtx.items }),
@@ -89,7 +89,7 @@ const Cart = (props) => {
         </div>
 
         <div className={classes.spans}>
-          <span className={classes.title}>Tax</span>
+          <span className={classes.title}>Tax(HST 15%)</span>
           <span>${tax}</span>
         </div>
         <div className={classes.spans}>

@@ -11,7 +11,7 @@ const AvailableMeal = () => {
     const fetchMeals = async () => {
       setIsLoading(true);
       const response = await fetch(
-        "https://learn-5c267.firebaseio.com/Meals.json"
+        "https://bistrostar-73b61-default-rtdb.firebaseio.com/Meals.json"
       );
 
       if (!response.ok) {
